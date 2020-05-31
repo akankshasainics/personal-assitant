@@ -7,19 +7,19 @@ import pytz
 from sqlite3 import Error
 import requests, json
 
-PAPERQUOTES_API_ENDPOINT = 'http://api.paperquotes.com/apiv1/quotes?tags=love&limit=5'
-TOKEN = '{8b708edeb611b9589a5ae1b9b12f92d3b5038968}'
-response = requests.get(PAPERQUOTES_API_ENDPOINT, headers={'Authorization': 'TOKEN {}'.format(TOKEN)})
+# PAPERQUOTES_API_ENDPOINT = 'http://api.paperquotes.com/apiv1/quotes?tags=love&limit=5'
+# TOKEN = '{8b708edeb611b9589a5ae1b9b12f92d3b5038968}'
+# response = requests.get(PAPERQUOTES_API_ENDPOINT, headers={'Authorization': 'TOKEN {}'.format(TOKEN)})
 
-if response.ok:
+# if response.ok:
 
-    quotes = json.loads(response.text).get('results')
+#     quotes = json.loads(response.text).get('results')
 
-    for quote in quotes:
-        print(quote.get('quote'))
-        print(quote.get('author'))
-        break
-        # print quote.get('tags')
+#     for quote in quotes:
+#         print(quote.get('quote'))
+#         print(quote.get('author'))
+#         break
+#         # print quote.get('tags')
 
 x = sys.argv
 def processing_alarm(conn, t, val):
@@ -87,9 +87,6 @@ def main():
                 ); """
 
     conn = create_connection(r"pythonsqlite.db")
-    c = conn.cursor()
-    
-    c.close()
     if conn is not None:
         create_table(conn, alarm_table)
     else:
